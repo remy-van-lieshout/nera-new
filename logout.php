@@ -23,7 +23,7 @@ header('Refresh: 2; URL = index.php');
         <div class="content">
             <div class="container pt-5">
                 <div class="d-flex justify-content-center h-150">
-                    <h4 class="fontTitle">You have cleaned session</h4>
+                    <h4 class="fontTitle">You have cleaned the session</h4>
                 </div>
             </div>
         </div>
