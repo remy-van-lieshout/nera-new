@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+include '../db_connection.php';
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -15,10 +21,7 @@
         <div class="content">
             <div class="container pt-5 fontNormal">
                 <p><?php
-                    session_start();
                     echo ("<p class='fontTitle'> Welkom " . "{$_SESSION['user']}" . "</p><br />");
-
-                    include '../db_connection.php';
 
                     $result = GetWishList();
                     // output data of each row

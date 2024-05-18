@@ -15,7 +15,6 @@ function CloseCon($conn)
 
 function GetWishList()
 {
-    OpenCon();
     $conn = OpenCon();
 
     $sql = "SELECT * FROM wens";
@@ -33,17 +32,31 @@ function GetWishList()
 
 function SetWishChecked($id, $user)
 {
-    OpenCon();
     $conn = OpenCon();
 
     $sql = "UPDATE wens SET weChecked = true, weUser = '$user' WHERE weId = $id";
-    $result = $conn->query($sql);
 
     if ($conn->query($sql) === TRUE) {
         CloseCon($conn);
         return true;
       } else {
         echo "Error updating record: " . $conn->error;
+        CloseCon($conn);
+        return false;
+      }
+}
+
+function CreateLog($actie, $user, $succes, $error)
+{
+    $conn = OpenCon();
+
+    $sql = "INSERT INTO log (LoActie, LoUser, LoSucces, LoError) VALUES ('$actie', '$user', '$succes', '$error')";
+
+    if ($conn->query($sql) === TRUE) {
+        CloseCon($conn);
+        return true;
+      } else {
+        echo "Error creating record: " . $conn->error;
         CloseCon($conn);
         return false;
       }

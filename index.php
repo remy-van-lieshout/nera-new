@@ -1,6 +1,8 @@
 <?php
 ob_start();
 session_start();
+
+include 'db_connection.php';
 ?>
 
 <!DOCTYPE html>
@@ -28,9 +30,12 @@ session_start();
             $_SESSION['valid'] = true;
             $_SESSION['timeout'] = time();
             $_SESSION['user'] = $_POST['user'];
+
+            CreateLog('login', $_POST['user'], true, '');
             header('Location: src/UnderConstruction.php');
         } else {
             $msg = "De code is niet correct!";
+            CreateLog('login', $_POST['user'], false, $msg);
         }
     }
     ?>

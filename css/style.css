@@ -27,8 +27,8 @@ body {
   justify-content: center;
   margin: 0px;
   background-color: var(--achtergrond) !important;
-  background: url('../images/wijzenSter.png')right bottom no-repeat, url('../images/bolderkar.png')left bottom no-repeat;
-  background-size: 200px, 200px;
+  background: url('../images/stars2.png')center top no-repeat, url('../images/wijzenSter.png')right bottom no-repeat, url('../images/bolderkar.png')left bottom no-repeat, url('../images/background.png')center bottom no-repeat;
+  background-size: cover, 200px, 200px, cover;
   color: var(--silhouette)
 }
 
@@ -59,7 +59,7 @@ main {
   margin-top: auto;
   margin-bottom: auto;
   width: 400px;
-  background-color: var(--laag3) !important;
+  background-color: var(--laag3);
 }
 
 .card-header h3 {
