@@ -34,14 +34,18 @@ function SetWishChecked($id, $user)
 {
     $conn = OpenCon();
 
+    //UPDATE `wens` SET `weChecked` = '1' WHERE `wens`.`weId` = 2;
     $sql = "UPDATE wens SET weChecked = true, weUser = '$user' WHERE weId = $id";
 
     if ($conn->query($sql) === TRUE) {
         CloseCon($conn);
+        CreateLog('setWishChecked' . $id, $user, true, '');	
         return true;
       } else {
-        echo "Error updating record: " . $conn->error;
+        $error = $conn->error;
+        echo "Error updating record: " . $error;
         CloseCon($conn);
+        CreateLog('setWishChecked' . $id, $user, false, $error);
         return false;
       }
 }

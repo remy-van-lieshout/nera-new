@@ -1,7 +1,11 @@
 <?php
 session_start();
+include '../helpers/db_connection.php';
 
-include '../db_connection.php';
+
+if ($_SESSION['user'] == null){
+    header('Location: ../index.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,20 +24,24 @@ include '../db_connection.php';
     <main class="main">
         <div class="content">
             <div class="container pt-5 fontNormal">
-                <p><?php
-                    echo ("<p class='fontTitle'> Welkom " . "{$_SESSION['user']}" . "</p><br />");
-
+                <?php
+                echo ("<p class='fontTitle'> Welkom " . "{$_SESSION['user']}" . "</p>");
+                ?>
+                <form action="../helpers/checkWish.php" method="post">
+                <ul class="list-group list-group-flush">
+                    <?php
                     $result = GetWishList();
                     // output data of each row
                     while ($row = $result->fetch_assoc()) {
-                        echo "id: " . $row["weId"] . " - Beschrijving: " . $row["weBeschrijving"] . " " . $row["weLink"] . "<br>";
+                        echo "<li class='list-group-item'>
+                        <input type='checkbox' value=" . $row["weId"] . " name=" . $row["weId"] . " id=" . $row["weId"] . " " . ($row['weChecked']==1 ? 'checked' : '') . "> 
+                        <a class='url' href=" . $row["weLink"] . ">" . $row["weBeschrijving"] . "</a></li>";
                     };
                     ?>
-                </p>
+                </ul>
+                </form>
 
-                <h3>Er word momenteel nog aan deze pagina gewerkt!</h3>
-
-                <form action="../logout.php" method="post">
+                <form action="../helpers/logout.php" method="post">
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">Logout</button>
                     </div>
