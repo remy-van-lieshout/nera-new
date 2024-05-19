@@ -27,19 +27,17 @@ if ($_SESSION['user'] == null){
                 <?php
                 echo ("<p class='fontTitle'> Welkom " . "{$_SESSION['user']}" . "</p>");
                 ?>
-                <form action="../helpers/checkWish.php" method="post">
                 <ul class="list-group list-group-flush">
                     <?php
                     $result = GetWishList();
                     // output data of each row
                     while ($row = $result->fetch_assoc()) {
-                        echo "<li class='list-group-item'>
-                        <input type='checkbox' value=" . $row["weId"] . " name=" . $row["weId"] . " id=" . $row["weId"] . " " . ($row['weChecked']==1 ? 'checked' : '') . "> 
-                        <a class='url' href=" . $row["weLink"] . ">" . $row["weBeschrijving"] . "</a></li>";
+                        echo "<li class='list-group-item'><form action='../helpers/checkWish.php' method='post'><input type='hidden' name='weId' value=" . $row["weId"] . ">
+                        <input type='checkbox' value=" . $row["weChecked"] . " name=checked" . $row["weId"] . " onchange='this.form.submit()' " . ($row['weChecked']==1 ? 'checked' : '') . "> 
+                        <a class='url' href=" . $row["weUrl"] . ">" . $row["weBeschrijving"] . "</a></form></li>";
                     };
                     ?>
                 </ul>
-                </form>
 
                 <form action="../helpers/logout.php" method="post">
                     <div class="form-group">

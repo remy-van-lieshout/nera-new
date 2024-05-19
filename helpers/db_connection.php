@@ -21,7 +21,6 @@ function GetWishList()
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        // output data of each row
         CloseCon($conn);
         return $result;
     } else {
@@ -30,22 +29,60 @@ function GetWishList()
     }
 }
 
-function SetWishChecked($id, $user)
+function SetWishChecked($id, $user, $checkedValue)
 {
     $conn = OpenCon();
 
-    //UPDATE `wens` SET `weChecked` = '1' WHERE `wens`.`weId` = 2;
-    $sql = "UPDATE wens SET weChecked = true, weUser = '$user' WHERE weId = $id";
+    // UPDATE `wens` SET `weChecked` = '1' WHERE `wens`.`weId` = 3;
+    $sql = "UPDATE wens SET weChecked = !$checkedValue, weUser = '$user' WHERE weId = $id";
 
     if ($conn->query($sql) === TRUE) {
         CloseCon($conn);
-        CreateLog('setWishChecked' . $id, $user, true, '');	
+        CreateLog('setWishChecked_' . $id . '_to:' . $checkedValue, $user, true, '');	
         return true;
       } else {
         $error = $conn->error;
         echo "Error updating record: " . $error;
         CloseCon($conn);
-        CreateLog('setWishChecked' . $id, $user, false, $error);
+        CreateLog('setWishChecked_' . $id . '_to:' . $checkedValue, $user, false, $error);
+        return false;
+      }
+}
+
+function AddWish($user, $beschrijving, $url)
+{
+    $conn = OpenCon();
+
+    $sql = "INSERT INTO wens VALUES (NULL, '$beschrijving', '$url', false, NULL)";
+
+    if ($conn->query($sql) === TRUE) {
+        CloseCon($conn);
+        CreateLog('addWish_' . $beschrijving, $user, true, '');	
+        return true;
+      } else {
+        $error = $conn->error;
+        echo "Error updating record: " . $error;
+        CloseCon($conn);
+        CreateLog('addWish_' . $beschrijving, $user, false, $error);
+        return false;
+      }
+}
+
+function DeleteWish($id, $user)
+{
+    $conn = OpenCon();
+
+    $sql = "DELETE FROM wens WHERE weId = $id";
+
+    if ($conn->query($sql) === TRUE) {
+        CloseCon($conn);
+        CreateLog('deleteWish_' . $id, $user, true, '');	
+        return true;
+      } else {
+        $error = $conn->error;
+        echo "Error updating record: " . $error;
+        CloseCon($conn);
+        CreateLog('deleteWish_' . $id, $user, false, $error);
         return false;
       }
 }

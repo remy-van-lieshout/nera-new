@@ -32,7 +32,13 @@ include 'helpers/db_connection.php';
             $_SESSION['user'] = $_POST['user'];
 
             CreateLog('login', $_POST['user'], true, '');
-            header('Location: src/UnderConstruction.php');
+            if ($_POST['user'] == 'remy' || $_POST['user'] == 'jennis') {
+                CreateLog('login admin', $_POST['user'], true, '');
+                header('Location: src/Admin.php');
+            } else {
+                CreateLog('login user', $_POST['user'], true, '');
+                header('Location: src/Wishlist.php');
+            }
         } else {
             $msg = "De code is niet correct!";
             CreateLog('login', $_POST['user'], false, $msg);
