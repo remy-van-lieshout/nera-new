@@ -6,6 +6,10 @@ include '../helpers/db_connection.php';
 if ($_SESSION['user'] == null){
     header('Location: ../index.php');
 }
+
+function IsNullOrEmptyString($str){
+    return ($str === null || trim($str) === '');
+}
 ?>
 
 <!DOCTYPE html>
@@ -27,14 +31,43 @@ if ($_SESSION['user'] == null){
                 <?php
                 echo ("<p class='fontTitle'> Welkom " . "{$_SESSION['user']}" . "</p>");
                 ?>
+                <p> In onderstaande lijst staan wat tips voor een kraamcadeau. Zet een vinkje om dubbele cadeau's te voorkomen.</p>
                 <ul class="list-group list-group-flush">
                     <?php
                     $result = GetWishList();
                     // output data of each row
                     while ($row = $result->fetch_assoc()) {
-                        echo "<li class='list-group-item'><form action='../helpers/checkWish.php' method='post'><input type='hidden' name='weId' value=" . $row["weId"] . ">
-                        <input type='checkbox' value=" . $row["weChecked"] . " name=checked" . $row["weId"] . " onchange='this.form.submit()' " . ($row['weChecked']==1 ? 'checked' : '') . "> 
-                        <a class='url' href=" . $row["weUrl"] . ">" . $row["weBeschrijving"] . "</a></form></li>";
+                        echo "<li class='list-group-item py-1'>
+                                <form action='../helpers/checkWish.php' method='post'>
+                                <div class='row'>
+                                    <div class='col-1 d-none'>
+                                        <input type='hidden' name='weId' value=" . $row["weId"] . ">
+                                    </div>";
+                        if(IsNullOrEmptyString($row['weUser']) || $row['weUser'] == $_SESSION['user']) {
+                            echo "<div class='col-1'>
+                                        <input type='checkbox' value=" . $row["weChecked"] . " name=checked" . $row["weId"] . " onchange='this.form.submit()' " . ($row['weChecked']==1 ? 'checked' : '') . ">
+                                  </div>
+                                  <div class='col'>
+                                    <a class='url' href=" . $row["weUrl"] . " target='_blank'>" . $row["weBeschrijving"] . "</a>
+                                  </div>"
+                                  ;
+                        } else if ($row["weChecked"]){
+                            echo "<div class='col-1'>
+                                        <input type='checkbox' value=" . $row["weChecked"] . " name=checked" . $row["weId"] . " onchange='this.form.submit()' " . ($row['weChecked']==1 ? 'checked' : '') . " disabled>
+                                  </div>
+                                  <div class='col'>
+                                    <s class='disabledItem'>" . $row["weBeschrijving"] . "</s>
+                                  </div>";
+                        } else {
+                            echo "<div class='col-1'>
+                                    <input type='checkbox' value=" . $row["weChecked"] . " name=checked" . $row["weId"] . " onchange='this.form.submit()' " . ($row['weChecked']==1 ? 'checked' : '') . " disabled>
+                                  </div>
+                                  <div class='col'>
+                                    <a class='url' href=" . $row["weUrl"] . " target='_blank'>" . $row["weBeschrijving"] . "</a>
+                                  </div>";
+                        }
+                            echo "</form>
+                            </li>";
                     };
                     ?>
                 </ul>

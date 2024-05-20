@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'db_connection.php';
 
 session_start();
@@ -26,7 +26,10 @@ header('Refresh: 2; URL = ../index.php');
         <div class="content">
             <div class="container pt-5">
                 <div class="d-flex justify-content-center h-150">
-                    <h4 class="fontTitle">You have cleaned the session</h4>
+                    <h4 class="fontTitle">De sessie is opgeruimd, uitloggen was succesvol.</h4>
+                </div>
+                <div class="d-flex justify-content-center h-150">
+                    <h3 class="fontTitle">Fijne dag gewenst, en tot de volgende keer!</h3>
                 </div>
             </div>
         </div>

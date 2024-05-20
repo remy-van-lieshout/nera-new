@@ -27,30 +27,46 @@ if ($_SESSION['user'] == null) {
                 <?php
                 echo ("<p class='fontTitle'> Welkom " . "{$_SESSION['user']}" . "</p>");
                 ?>
-                <form action="../helpers/checkWish.php" method="post">
-                    <ul class="list-group list-group-flush">
-                        <?php
-                        $result = GetWishList();
-                        // output data of each row
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<li class='list-group-item'> <form action='../helpers/deleteWish.php' method='post'>
-                        <input type='checkbox' value=" . $row["weId"] . " name=" . $row["weId"] . " 
-                        id=" . $row["weId"] . " " . ($row['weChecked'] == 1 ? 'checked' : '') . "> 
-                        <a class='url' href=" . $row["weUrl"] . ">" . $row["weBeschrijving"] . "</a>
-                        <button type='submit' class='btn btn-success' style='float:right'>Delete</button>
-                        </form></li>";
-                        };
-                        ?>
-                        <li class="list-group-item">
-                        <form action="../helpers/addWish.php" method="post" class="inline">
-                            <input type="checkbox" value="" name="checked" id="checked">
-                            <input type="text" class="form-control" id="beschrijving" name="beschrijving" placeholder="Beschrijving">
-                            <input type="text" class="form-control" id="url" name="url" placeholder="Url">
-                            <button type="submit" class="btn btn-success">Add</button>
+                <ul class="list-group list-group-flush">
+                    <?php
+                    $result = GetWishList();
+                    // output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<li class='list-group-item py-1'>
+                                <form action='../helpers/deleteWish.php' method='post'>
+                                    <div class='row'>
+                                        <div class='col-1'>
+                                            <label class='control-label' for='weId'>" . $row["weId"] . ".</label>
+                                            <input type='hidden' name='weId' id='weId' value=" . $row["weId"] . ">
+                                        </div>
+                                        <div class='col'>
+                                            <label class='control-label' for='weBeschrijving'></label>
+                                            <a class='url' href=" . $row["weUrl"] . " target='_blank'>" . $row["weBeschrijving"] . "</a>
+                                        </div>
+                                        <div class='col-1'>
+                                            <button type='submit' class='btn btn-success btn-sm'>Delete</button>
+                                       </div>
+                                    </div>
+                                </form>
+                            </li>";
+                    };
+                    ?>
+                    <li class="list-group-item py-1">
+                        <form action="../helpers/addWish.php" method="post">
+                            <div class='row'>
+                                <div class="col">
+                                    <input type="text" class="form-control form-control-sm" id="beschrijving" name="beschrijving" placeholder="Beschrijving">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control form-control-sm" id="url" name="url" placeholder="Url beginnend met https://">
+                                </div>
+                                <div class="col-1">
+                                    <button type="submit" class="btn btn-success btn-sm">Add</button>
+                                </div>
+                            </div>
                         </form>
                     </li>
-                    </ul>
-                </form>
+                </ul>
 
                 <form action="../helpers/logout.php" method="post">
                     <div class="form-group">

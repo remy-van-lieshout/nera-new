@@ -7,6 +7,7 @@
   --tekst-goud: #ffdf99;
   --sterren-klein: #d6b160;
   --sterren-groot: #ebd573;
+  --rood: #8f4f4f;
 }
 
 @font-face {
@@ -77,14 +78,25 @@ input {
   color: var(--silhouette) !important;
 }
 
-.inlineForm{
-  display: flex;
-}
-
 input:focus {
   outline: 0 0 0 0 !important;
   box-shadow: 0 0 0 0 !important;
   border-color: var(--laag3) !important;
+}
+
+input[type=checkbox] {
+  accent-color: var(--sterren-groot);
+}
+
+input[type=checkbox]:disabled {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--rood);
+  background-color: var(--rood) !important;
+  width: 13px;
+  height: 13px;
+  border-radius: 2px;
 }
 
 ::placeholder {
@@ -104,11 +116,12 @@ img {
   background-color: rgba(255, 255, 255, 0);
 }
 
-input[type=checkbox] {
-  accent-color: var(--sterren-groot);
-}
-
 .url {
   color: var(--tekst-goud) !important;
+  padding-left: 5px;
+}
+
+.disabledItem {
+  color: rgba(143, 79, 79, 1);
   padding-left: 5px;
 }

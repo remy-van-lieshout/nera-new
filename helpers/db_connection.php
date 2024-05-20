@@ -35,6 +35,9 @@ function SetWishChecked($id, $user, $checkedValue)
 
     // UPDATE `wens` SET `weChecked` = '1' WHERE `wens`.`weId` = 3;
     $sql = "UPDATE wens SET weChecked = !$checkedValue, weUser = '$user' WHERE weId = $id";
+    if ($checkedValue == 1){
+      $sql = "UPDATE wens SET weChecked = !$checkedValue, weUser = '' WHERE weId = $id";
+    }
 
     if ($conn->query($sql) === TRUE) {
         CloseCon($conn);
@@ -53,7 +56,7 @@ function AddWish($user, $beschrijving, $url)
 {
     $conn = OpenCon();
 
-    $sql = "INSERT INTO wens VALUES (NULL, '$beschrijving', '$url', false, NULL)";
+    $sql = "INSERT INTO wens VALUES (NULL, '$beschrijving', '$url', false, '')";
 
     if ($conn->query($sql) === TRUE) {
         CloseCon($conn);
