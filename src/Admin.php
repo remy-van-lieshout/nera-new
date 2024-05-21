@@ -3,7 +3,7 @@ session_start();
 include '../helpers/db_connection.php';
 
 
-if ($_SESSION['user'] == null) {
+if ($_SESSION['user'] == null || $_SESSION['user'] != 'admin'){
     header('Location: ../index.php');
 }
 ?>
@@ -21,11 +21,13 @@ if ($_SESSION['user'] == null) {
 </head>
 
 <body>
+    
     <main class="main">
+    <?php include '../helpers/NavBar.php';?>
         <div class="content">
             <div class="container pt-5 fontNormal">
                 <?php
-                echo ("<p class='fontTitle'> Welkom " . "{$_SESSION['user']}" . "</p>");
+                echo ("<p class='fontTitle'> Hallo " . "{$_SESSION['user']}" . ", bewerk het wensenlijstje hier</p>");
                 ?>
                 <ul class="list-group list-group-flush">
                     <?php
@@ -42,6 +44,10 @@ if ($_SESSION['user'] == null) {
                                         <div class='col'>
                                             <label class='control-label' for='weBeschrijving'></label>
                                             <a class='url' href=" . $row["weUrl"] . " target='_blank'>" . $row["weBeschrijving"] . "</a>
+                                        </div>
+                                        <div class='col-1'>
+                                            <label class='control-label' for='weMax'></label>
+                                            <a name='weMax' id='weMax' value=" . $row["weMax"] . ">" . $row["weMax"] . "</a>
                                         </div>
                                         <div class='col-1'>
                                             <button type='submit' class='btn btn-success btn-sm'>Delete</button>
@@ -61,18 +67,15 @@ if ($_SESSION['user'] == null) {
                                     <input type="text" class="form-control form-control-sm" id="url" name="url" placeholder="Url beginnend met https://">
                                 </div>
                                 <div class="col-1">
+                                    <input type="text" class="form-control form-control-sm" id="max" name="max" placeholder="Max.">
+                                </div>
+                                <div class="col-1">
                                     <button type="submit" class="btn btn-success btn-sm">Add</button>
                                 </div>
                             </div>
                         </form>
                     </li>
                 </ul>
-
-                <form action="../helpers/logout.php" method="post">
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success">Logout</button>
-                    </div>
-                </form>
             </div>
         </div>
     </main>

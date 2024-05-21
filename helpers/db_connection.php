@@ -29,6 +29,28 @@ function GetWishList()
     }
 }
 
+function GetWishCountAndWish($id)
+{
+    $conn = OpenCon();
+
+    $sql = "SELECT * FROM wens WHERE weId = $id LIMIT 1";
+    $result = $conn->query($sql);
+    $wish = $result->fetch_assoc();
+    $beschrijving = $wish['weBeschrijving'];
+
+    $sql2 = "SELECT COUNT(*) as total FROM wens WHERE weBeschrijving = '$beschrijving'";
+    $result2 = $conn->query($sql2);
+    $count = $result2->fetch_assoc();
+
+    if ($result->num_rows > 0 && $result2->num_rows > 0) {
+        CloseCon($conn);
+        return array($count['total'], $wish);
+    } else {
+        CloseCon($conn);
+        echo "0 results";
+    }
+}
+
 function SetWishChecked($id, $user, $checkedValue)
 {
     $conn = OpenCon();
@@ -41,7 +63,15 @@ function SetWishChecked($id, $user, $checkedValue)
 
     if ($conn->query($sql) === TRUE) {
         CloseCon($conn);
-        CreateLog('setWishChecked_' . $id . '_to:' . $checkedValue, $user, true, '');	
+        CreateLog('setWishChecked_' . $id . '_to:' . $checkedValue, $user, true, '');
+        list($count, $wish) = GetWishCountAndWish($id);
+        if ($checkedValue == 0 && (int)$count < (int)$wish['weMax']){
+          AddWish($user, $wish['weBeschrijving'], $wish['weUrl'], $wish['weMax']);
+        }
+        if ($checkedValue == 1 && (int)$count > 1){
+          DeleteWish($id, $user);
+        }
+
         return true;
       } else {
         $error = $conn->error;
@@ -52,11 +82,11 @@ function SetWishChecked($id, $user, $checkedValue)
       }
 }
 
-function AddWish($user, $beschrijving, $url)
+function AddWish($user, $beschrijving, $url, $max)
 {
     $conn = OpenCon();
 
-    $sql = "INSERT INTO wens VALUES (NULL, '$beschrijving', '$url', false, '')";
+    $sql = "INSERT INTO wens VALUES (NULL, '$beschrijving', '$url', false, '', '$max')";
 
     if ($conn->query($sql) === TRUE) {
         CloseCon($conn);

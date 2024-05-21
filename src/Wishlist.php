@@ -26,11 +26,9 @@ function IsNullOrEmptyString($str){
 
 <body>
     <main class="main">
+    <?php include '../helpers/NavBar.php';?>
         <div class="content">
             <div class="container pt-5 fontNormal">
-                <?php
-                echo ("<p class='fontTitle'> Welkom " . "{$_SESSION['user']}" . "</p>");
-                ?>
                 <p> In onderstaande lijst staan wat tips voor een kraamcadeau. Zet een vinkje om dubbele cadeau's te voorkomen.</p>
                 <ul class="list-group list-group-flush">
                     <?php
@@ -40,8 +38,11 @@ function IsNullOrEmptyString($str){
                         echo "<li class='list-group-item py-1'>
                                 <form action='../helpers/checkWish.php' method='post'>
                                 <div class='row'>
-                                    <div class='col-1 d-none'>
+                                    <div class='d-none'>
                                         <input type='hidden' name='weId' value=" . $row["weId"] . ">
+                                    </div>
+                                    <div class='d-none'>
+                                        <input type='hidden' name='weMax' value=" . $row["weMax"] . ">
                                     </div>";
                         if(IsNullOrEmptyString($row['weUser']) || $row['weUser'] == $_SESSION['user']) {
                             echo "<div class='col-1'>
@@ -71,12 +72,6 @@ function IsNullOrEmptyString($str){
                     };
                     ?>
                 </ul>
-
-                <form action="../helpers/logout.php" method="post">
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success">Logout</button>
-                    </div>
-                </form>
             </div>
         </div>
     </main>

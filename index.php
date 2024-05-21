@@ -21,18 +21,19 @@ include 'helpers/db_connection.php';
     <?php
     $msg = '';
     $code = 'jrjn430';
+    $adminCode = '616760';
 
     if (
         isset($_POST['login']) && !empty($_POST['user'])
         && !empty($_POST['code'])
     ) {
-        if ($_POST['code'] == $code) {
+        if ($_POST['code'] == $code || $_POST['code'] == $adminCode) {
             $_SESSION['valid'] = true;
             $_SESSION['timeout'] = time();
             $_SESSION['user'] = $_POST['user'];
 
             CreateLog('login', $_POST['user'], true, '');
-            if ($_POST['user'] == 'remy' || $_POST['user'] == 'jennis') {
+            if ($_POST['user'] == 'admin' && $_POST['code'] == $adminCode) {
                 CreateLog('login admin', $_POST['user'], true, '');
                 header('Location: src/Admin.php');
             } else {
