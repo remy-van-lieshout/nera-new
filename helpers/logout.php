@@ -23,6 +23,16 @@ header('Refresh: 2; URL = ../index.php');
 
 <body>
     <main class="main">
+        <div id='star1'></div>
+        <div id='star2'></div>
+        <div id='star3'></div>
+        <div id='star4'></div>
+        <div id='star5'></div>
+        <div id='star6'></div>
+        <div id='star7'></div>
+        <div id='star8'></div>
+        <div id='star9'></div>
+        <div id='star10'></div>
         <div class="content">
             <div class="container pt-5">
                 <div class="d-flex justify-content-center h-150">

@@ -16,8 +16,8 @@
 
 @font-face {
   font-family: amour;
-  src: url("../font/Amour\ Stories.otf") format("opentype"), 
-  url("../font/Amour\ Stories.ttf") format("truetype");
+  src: url("../font/Amour\ Stories.otf") format("opentype"),
+    url("../font/Amour\ Stories.ttf") format("truetype");
 }
 
 @font-face {
@@ -33,7 +33,7 @@ body {
   margin: 0px;
   background-color: var(--achtergrond) !important;
   background: url('../images/stars2.png')center top no-repeat, url('../images/wijzenSter.png')right bottom no-repeat, url('../images/bolderkar.png')left bottom no-repeat, url('../images/background.png')center bottom no-repeat;
-  background-size: cover, 120px, 120px, cover;
+  background-size: cover, 20vh, 20vh, cover;
   color: var(--silhouette)
 }
 
@@ -67,13 +67,13 @@ main {
   background-color: var(--laag3);
 }
 
-.card-header h3{
+.card-header h3 {
   font-family: 'mathilde';
   font-size: xxx-large;
   color: var(--achtergrond);
 }
 
-.card-footer div{
+.card-footer div {
   color: var(--achtergrond);
 }
 
@@ -105,10 +105,12 @@ input[type=checkbox]:disabled {
 
 ::placeholder {
   color: var(--laag3) !important;
-  opacity: 1; /* Firefox */
+  opacity: 1;
+  /* Firefox */
 }
 
-::-ms-input-placeholder { /* Edge 12 -18 */
+::-ms-input-placeholder {
+  /* Edge 12 -18 */
   color: var(--laag3) !important;
 }
 
@@ -130,11 +132,14 @@ input[type=checkbox]:disabled {
   background-color: var(--transparentBlack) !important;
 }
 
-.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
+.navbar-dark .navbar-nav .active>.nav-link,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .show>.nav-link {
   color: var(--sterren-groot);
 }
 
-#star1{
+#star1 {
   top: 8vh;
   left: 12vw;
   position: fixed;
@@ -144,13 +149,22 @@ input[type=checkbox]:disabled {
   background: var(--sterren-groot-rgb);
 }
 
-#star1:hover, #star2:hover, #star3:hover, #star4:hover, #star5:hover, #star6:hover, #star7:hover, #star8:hover, #star9:hover, #star10:hover{
+#star1:hover,
+#star2:hover,
+#star3:hover,
+#star4:hover,
+#star5:hover,
+#star6:hover,
+#star7:hover,
+#star8:hover,
+#star9:hover,
+#star10:hover {
   background: var(--sterren-groot);
   box-shadow: 0px 0px 6px 6px rgba(235, 213, 115, 0.4);
   cursor: none;
 }
 
-#star2{
+#star2 {
   top: 22vh;
   left: 49vw;
   position: fixed;
@@ -160,7 +174,7 @@ input[type=checkbox]:disabled {
   background: var(--sterren-groot-rgb);
 }
 
-#star3{
+#star3 {
   top: 22vh;
   left: 22vw;
   position: fixed;
@@ -170,7 +184,7 @@ input[type=checkbox]:disabled {
   background: var(--sterren-groot-rgb);
 }
 
-#star4{
+#star4 {
   top: 38vh;
   left: 81vw;
   position: fixed;
@@ -180,7 +194,7 @@ input[type=checkbox]:disabled {
   background: var(--sterren-groot-rgb);
 }
 
-#star5{
+#star5 {
   top: 50vh;
   left: 64vw;
   position: fixed;
@@ -190,7 +204,7 @@ input[type=checkbox]:disabled {
   background: var(--sterren-groot-rgb);
 }
 
-#star6{
+#star6 {
   top: 13vh;
   left: 76vw;
   position: fixed;
@@ -200,7 +214,7 @@ input[type=checkbox]:disabled {
   background: var(--sterren-groot-rgb);
 }
 
-#star7{
+#star7 {
   top: 18vh;
   left: 92vw;
   position: fixed;
@@ -210,7 +224,7 @@ input[type=checkbox]:disabled {
   background: var(--sterren-groot-rgb);
 }
 
-#star8{
+#star8 {
   top: 50vh;
   left: 30vw;
   position: fixed;
@@ -220,7 +234,7 @@ input[type=checkbox]:disabled {
   background: var(--sterren-groot-rgb);
 }
 
-#star9{
+#star9 {
   top: 40vh;
   left: 3vw;
   position: fixed;
@@ -230,7 +244,7 @@ input[type=checkbox]:disabled {
   background: var(--sterren-groot-rgb);
 }
 
-#star10{
+#star10 {
   top: 54vh;
   left: 70vw;
   position: fixed;

@@ -9,7 +9,6 @@ if ($_SESSION['user'] == null) {
     <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navb" aria-expanded="false">
         <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="navbar-collapse collapse" id="navb">
         <ul class="navbar-nav" style="flex: 1; justify-content: end;">
             <?php

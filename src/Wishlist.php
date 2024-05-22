@@ -3,11 +3,12 @@ session_start();
 include '../helpers/db_connection.php';
 
 
-if ($_SESSION['user'] == null){
+if ($_SESSION['user'] == null) {
     header('Location: ../index.php');
 }
 
-function IsNullOrEmptyString($str){
+function IsNullOrEmptyString($str)
+{
     return ($str === null || trim($str) === '');
 }
 ?>
@@ -27,7 +28,17 @@ function IsNullOrEmptyString($str){
 
 <body>
     <main class="main">
-    <?php include '../helpers/NavBar.php';?>
+        <div id='star1'></div>
+        <div id='star2'></div>
+        <div id='star3'></div>
+        <div id='star4'></div>
+        <div id='star5'></div>
+        <div id='star6'></div>
+        <div id='star7'></div>
+        <div id='star8'></div>
+        <div id='star9'></div>
+        <div id='star10'></div>
+        <?php include '../helpers/NavBar.php'; ?>
         <div class="content">
             <div class="container pt-5 fontNormal">
                 <p> In onderstaande lijst staan wat tips voor een kraamcadeau. Zet een vinkje om dubbele cadeau's te voorkomen.</p>
@@ -45,30 +56,29 @@ function IsNullOrEmptyString($str){
                                     <div class='d-none'>
                                         <input type='hidden' name='weMax' value=" . $row["weMax"] . ">
                                     </div>";
-                        if(IsNullOrEmptyString($row['weUser']) || $row['weUser'] == $_SESSION['user']) {
+                        if (IsNullOrEmptyString($row['weUser']) || $row['weUser'] == $_SESSION['user']) {
                             echo "<div class='col-1'>
-                                        <input type='checkbox' value=" . $row["weChecked"] . " name=checked" . $row["weId"] . " onchange='this.form.submit()' " . ($row['weChecked']==1 ? 'checked' : '') . ">
+                                        <input type='checkbox' value=" . $row["weChecked"] . " name=checked" . $row["weId"] . " onchange='this.form.submit()' " . ($row['weChecked'] == 1 ? 'checked' : '') . ">
                                   </div>
                                   <div class='col'>
                                     <a class='url' href=" . $row["weUrl"] . " target='_blank'>" . $row["weBeschrijving"] . "</a>
-                                  </div>"
-                                  ;
-                        } else if ($row["weChecked"]){
+                                  </div>";
+                        } else if ($row["weChecked"]) {
                             echo "<div class='col-1'>
-                                        <input type='checkbox' value=" . $row["weChecked"] . " name=checked" . $row["weId"] . " onchange='this.form.submit()' " . ($row['weChecked']==1 ? 'checked' : '') . " disabled>
+                                        <input type='checkbox' value=" . $row["weChecked"] . " name=checked" . $row["weId"] . " onchange='this.form.submit()' " . ($row['weChecked'] == 1 ? 'checked' : '') . " disabled>
                                   </div>
                                   <div class='col'>
                                     <s class='disabledItem'>" . $row["weBeschrijving"] . "</s>
                                   </div>";
                         } else {
                             echo "<div class='col-1'>
-                                    <input type='checkbox' value=" . $row["weChecked"] . " name=checked" . $row["weId"] . " onchange='this.form.submit()' " . ($row['weChecked']==1 ? 'checked' : '') . " disabled>
+                                    <input type='checkbox' value=" . $row["weChecked"] . " name=checked" . $row["weId"] . " onchange='this.form.submit()' " . ($row['weChecked'] == 1 ? 'checked' : '') . " disabled>
                                   </div>
                                   <div class='col'>
                                     <a class='url' href=" . $row["weUrl"] . " target='_blank'>" . $row["weBeschrijving"] . "</a>
                                   </div>";
                         }
-                            echo "</form>
+                        echo "</form>
                             </li>";
                     };
                     ?>

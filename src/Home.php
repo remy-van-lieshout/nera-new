@@ -3,7 +3,7 @@ session_start();
 include '../helpers/db_connection.php';
 
 
-if ($_SESSION['user'] == null){
+if ($_SESSION['user'] == null) {
     header('Location: ../index.php');
 }
 ?>
@@ -23,7 +23,17 @@ if ($_SESSION['user'] == null){
 
 <body>
     <main class="main">
-    <?php include '../helpers/NavBar.php';?>
+        <div id='star1'></div>
+        <div id='star2'></div>
+        <div id='star3'></div>
+        <div id='star4'></div>
+        <div id='star5'></div>
+        <div id='star6'></div>
+        <div id='star7'></div>
+        <div id='star8'></div>
+        <div id='star9'></div>
+        <div id='star10'></div>
+        <?php include '../helpers/NavBar.php'; ?>
         <div class="content">
             <div class="container pt-5 fontNormal" style="max-height: 30vh !important;">
                 <h3>Welkom op de website van Nera van Lieshout!</h3>
