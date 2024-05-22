@@ -13,6 +13,7 @@ include 'helpers/db_connection.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/neraIcon.ico">
 </head>
@@ -38,7 +39,7 @@ include 'helpers/db_connection.php';
                 header('Location: src/Admin.php');
             } else {
                 CreateLog('login user', $_POST['user'], true, '');
-                header('Location: src/Wishlist.php');
+                header('Location: src/Home.php');
             }
         } else {
             $msg = "De code is niet correct!";
@@ -48,6 +49,16 @@ include 'helpers/db_connection.php';
     ?>
 
     <main class="main">
+    <div id='star1'></div>
+    <div id='star2'></div>
+    <div id='star3'></div>
+    <div id='star4'></div>
+    <div id='star5'></div>
+    <div id='star6'></div>
+    <div id='star7'></div>
+    <div id='star8'></div>
+    <div id='star9'></div>
+    <div id='star10'></div>
         <div class="content">
             <div class="container pt-5">
                 <div class="d-flex justify-content-center h-150">

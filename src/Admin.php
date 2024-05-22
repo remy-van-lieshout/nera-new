@@ -15,7 +15,8 @@ if ($_SESSION['user'] == null || $_SESSION['user'] != 'admin'){
     <title>Nera</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../images/neraIcon.ico">
 </head>
@@ -29,7 +30,7 @@ if ($_SESSION['user'] == null || $_SESSION['user'] != 'admin'){
                 <?php
                 echo ("<p class='fontTitle'> Hallo " . "{$_SESSION['user']}" . ", bewerk het wensenlijstje hier</p>");
                 ?>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush overflow-auto pr-4" style="max-height: 30vh !important;">
                     <?php
                     $result = GetWishList();
                     // output data of each row

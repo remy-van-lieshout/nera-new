@@ -8,6 +8,10 @@
   --sterren-klein: #d6b160;
   --sterren-groot: #ebd573;
   --rood: #8f4f4f;
+  --transparent: rgba(0, 0, 0, 0);
+  --transparentBlack: rgba(0, 0, 0, 0.5);
+  --sterren-klein-rgb: rgb(214, 177, 96);
+  --sterren-groot-rgb: rgb(235, 213, 115);
 }
 
 @font-face {
@@ -29,7 +33,7 @@ body {
   margin: 0px;
   background-color: var(--achtergrond) !important;
   background: url('../images/stars2.png')center top no-repeat, url('../images/wijzenSter.png')right bottom no-repeat, url('../images/bolderkar.png')left bottom no-repeat, url('../images/background.png')center bottom no-repeat;
-  background-size: cover, 200px, 200px, cover;
+  background-size: cover, 120px, 120px, cover;
   color: var(--silhouette)
 }
 
@@ -109,7 +113,7 @@ input[type=checkbox]:disabled {
 }
 
 .list-group-item {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: var(--transparent);
 }
 
 .url {
@@ -123,10 +127,115 @@ input[type=checkbox]:disabled {
 }
 
 .navbar {
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-color: var(--transparentBlack) !important;
 }
 
 .navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
   color: var(--sterren-groot);
+}
 
+#star1{
+  top: 8vh;
+  left: 12vw;
+  position: fixed;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--sterren-groot-rgb);
+}
+
+#star1:hover, #star2:hover, #star3:hover, #star4:hover, #star5:hover, #star6:hover, #star7:hover, #star8:hover, #star9:hover, #star10:hover{
+  background: var(--sterren-groot);
+  box-shadow: 0px 0px 6px 6px rgba(235, 213, 115, 0.4);
+  cursor: none;
+}
+
+#star2{
+  top: 22vh;
+  left: 49vw;
+  position: fixed;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--sterren-groot-rgb);
+}
+
+#star3{
+  top: 22vh;
+  left: 22vw;
+  position: fixed;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--sterren-groot-rgb);
+}
+
+#star4{
+  top: 38vh;
+  left: 81vw;
+  position: fixed;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--sterren-groot-rgb);
+}
+
+#star5{
+  top: 50vh;
+  left: 64vw;
+  position: fixed;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--sterren-groot-rgb);
+}
+
+#star6{
+  top: 13vh;
+  left: 76vw;
+  position: fixed;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--sterren-groot-rgb);
+}
+
+#star7{
+  top: 18vh;
+  left: 92vw;
+  position: fixed;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--sterren-groot-rgb);
+}
+
+#star8{
+  top: 50vh;
+  left: 30vw;
+  position: fixed;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--sterren-groot-rgb);
+}
+
+#star9{
+  top: 40vh;
+  left: 3vw;
+  position: fixed;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--sterren-groot-rgb);
+}
+
+#star10{
+  top: 54vh;
+  left: 70vw;
+  position: fixed;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background: var(--sterren-groot-rgb);
 }
