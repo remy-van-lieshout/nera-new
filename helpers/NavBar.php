@@ -4,7 +4,7 @@ if ($_SESSION['user'] == null) {
 }
 ?>
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark pl-5 pr-5">
     <a class="navbar-brand url">Welkom <?php echo $_SESSION['user']; ?></a>
     <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navb" aria-expanded="false">
         <span class="navbar-toggler-icon"></span>
