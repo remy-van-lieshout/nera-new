@@ -32,8 +32,6 @@ include 'helpers/db_connection.php';
             $_SESSION['valid'] = true;
             $_SESSION['timeout'] = time();
             $_SESSION['user'] = $_POST['user'];
-
-            CreateLog('login', $_POST['user'], true, '');
             if ($_POST['user'] == 'admin' && $_POST['code'] == $adminCode) {
                 CreateLog('login admin', $_POST['user'], true, '');
                 header('Location: src/Admin.php');

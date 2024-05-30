@@ -37,7 +37,7 @@ if ($_SESSION['user'] == null || $_SESSION['user'] != 'admin') {
         <div class="content">
             <div class="container pt-5 fontNormal">
                 <p> Logs</p>
-                <ul style="max-height: 60vh !important;">
+                <ul style="max-height: 60vh !important; overflow: auto; padding: 15px;">
                     <?php
                     $result = GetLogs();
                     echo "<li class='list-group-item py-1'>";
