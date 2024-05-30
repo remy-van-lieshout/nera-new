@@ -13,15 +13,12 @@ if ($_SESSION['user'] == null) {
         <ul class="navbar-nav" style="flex: 1; justify-content: end;">
             <?php
             if ($_SESSION['user'] == 'admin') {
-                if (str_ends_with($_SERVER['SCRIPT_NAME'], "/Admin.php")) {
-                    echo "<li class='nav-item active'>
-                        <a class='nav-link' href='../src/Admin.php'>Admin</a>
-                      </li>";
-                } else {
-                    echo "<li class='nav-item'>
-                        <a class='nav-link' href='../src/Admin.php'>Admin</a>
-                      </li>";
-                }
+                echo "<li class='nav-item";
+                if (str_ends_with($_SERVER['SCRIPT_NAME'], "/Log.php")) { echo " active";}
+                echo "'><a class='nav-link' href='../src/Log.php'>Logs</a></li>";
+                echo "<li class='nav-item";
+                if (str_ends_with($_SERVER['SCRIPT_NAME'], "/Admin.php")) { echo " active";}
+                echo "'><a class='nav-link' href='../src/Admin.php'>Admin</a></li>";
             }
             ?>
             <li class="nav-item <?php if (str_ends_with($_SERVER['SCRIPT_NAME'], "/Home.php")) {

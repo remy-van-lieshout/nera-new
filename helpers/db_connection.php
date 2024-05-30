@@ -29,6 +29,22 @@ function GetWishList()
     }
 }
 
+function GetLogs()
+{
+    $conn = OpenCon();
+
+    $sql = "SELECT * FROM `log` ORDER BY `LoTimestamp` DESC";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        CloseCon($conn);
+        return $result;
+    } else {
+        CloseCon($conn);
+        echo "0 results";
+    }
+}
+
 function GetWishCountAndWish($id)
 {
     $conn = OpenCon();
