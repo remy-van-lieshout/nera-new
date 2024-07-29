@@ -31,6 +31,11 @@ if ($_SESSION['user'] == null) {
                                 } ?>">
                 <a class="nav-link" href="../src/Wishlist.php">Wensenlijst</a>
             </li>
+            <li class="nav-item <?php if (str_ends_with($_SERVER['SCRIPT_NAME'], "/FotosBarbeque.php")) {
+                                    echo 'active';
+                                } ?>">
+                <a class="nav-link" href="../src/FotosBarbeque.php">Fotos</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="../helpers/logout.php">Uitloggen</a>
             </li>
