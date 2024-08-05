@@ -36,8 +36,8 @@ if ($_SESSION['user'] == null) {
         <?php include '../helpers/NavBar.php'; ?>
         <div class="content">
             <div class="container pt-5 fontNormal">
-                <p> Bekijk hier de foto's van het barbeque feest van 14-07-2024.</p>
-                <div class="row overflow-auto" style="max-height: 50vh !important;">
+                <p> Bekijk hier de foto's van het barbeque feest van 14-07-2024. Door op een foto te klikken wordt een nieuwe pagina geopend.</p>
+                <div class="row overflow-auto" style="max-height: 75vh !important;">
                 <?php 
                     $dir = "../images/FotosBarbeque/*.jpg";
                     //get the list of all files with .jpg extension in the directory and safe it in an array named $images
@@ -45,8 +45,8 @@ if ($_SESSION['user'] == null) {
                     
                     //extract only the name of the file without the extension and save in an array named $find
                     foreach( $images as $image ):
-                        echo "<a href='" . $image . "' data-toggle='lightbox' data-gallery='example-gallery' class='col-lg-3 col-md-4 col-6 my-3' style='color: goldenrod;'>
-                                <img src='" . $image . "' class='img-fluid card'>
+                        echo "<a target='_blank' href='" . $image . "' data-toggle='lightbox' data-gallery='example-gallery' class='col-lg-3 col-md-4 col-6 my-3'>
+                                <img src='" . $image . "' class='img-fluid card' style='max-height: 165px; object-fit: contain; '>
                             </a>";
                     endforeach;
                     ?>
