@@ -37,6 +37,20 @@ if ($_SESSION['user'] == null) {
         <div class="content">
             <div class="container pt-5 fontNormal">
                 <p> Bekijk hier de foto's van het barbeque feest van 14-07-2024.</p>
+                <div class="row overflow-auto" style="max-height: 50vh !important;">
+                <?php 
+                    $dir = "../images/FotosBarbeque/*.jpg";
+                    //get the list of all files with .jpg extension in the directory and safe it in an array named $images
+                    $images = glob( $dir );
+                    
+                    //extract only the name of the file without the extension and save in an array named $find
+                    foreach( $images as $image ):
+                        echo "<a href='" . $image . "' data-toggle='lightbox' data-gallery='example-gallery' class='col-lg-3 col-md-4 col-6 my-3' style='color: goldenrod;'>
+                                <img src='" . $image . "' class='img-fluid card'>
+                            </a>";
+                    endforeach;
+                    ?>
+                </div>
             </div>
         </div>
     </main>

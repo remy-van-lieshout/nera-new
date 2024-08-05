@@ -5,7 +5,7 @@ function OpenCon()
     /* on debug:
     */
     $dbuser = "root";
-    $dbpass = "k_90KPwItp[oz0p.";
+    $dbpass = "";
     /*
     $dbuser = "nera_db_user";
     $dbpass = "d8^z51u3U";
