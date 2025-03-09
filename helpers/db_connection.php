@@ -4,8 +4,8 @@ function OpenCon()
     $dbhost = "localhost";
     /* on debug:
     $dbuser = "root";
-    $dbpass = "k_90KPwItp[oz0p.";
-    /*
+    $dbpass = "test123";
+    */
     $dbuser = "nera_db_user";
     $dbpass = "d8^z51u3U";
     $dbname = "nera";
