@@ -3,14 +3,12 @@ function OpenCon()
 {
     $dbhost = "localhost";
     /* on debug:
-    */
     $dbuser = "root";
-    $dbpass = "test123";
-    /* else:
+    $dbpass = "k_90KPwItp[oz0p.";
+    /*
     $dbuser = "nera_db_user";
     $dbpass = "d8^z51u3U";
-    */
-    $dbname = "nera-php";
+    $dbname = "nera";
     $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname) or die("Connect failed: %s\n" . $conn->error);
     return $conn;
 }
