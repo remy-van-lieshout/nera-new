@@ -12,7 +12,7 @@ if ($_SESSION['user'] == null || $_SESSION['user'] != 'admin') {
 <html lang="nl">
 
 <head>
-    <title><?php echo str_contains($_SERVER['SERVER_NAME'], "nera") ? "Nera" : "Familie van Lieshout";?></title>
+    <title><?php echo str_contains($_SERVER['SERVER_NAME'], "nera") ? "Nera" : "Familie van Lieshout"; ?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
@@ -43,8 +43,11 @@ if ($_SESSION['user'] == null || $_SESSION['user'] != 'admin') {
                     <?php
                     $result = GetWishList();
                     // output data of each row
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<li class='list-group-item py-1'>
+                    if ($result != NULL) {
+                        echo "<li class='list-group-item py-1'>Geen wensen gevonden</li>";
+
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<li class='list-group-item py-1'>
                                 <form action='../helpers/deleteWish.php' method='post'>
                                     <div class='row'>
                                         <div class='col-1'>
@@ -65,6 +68,7 @@ if ($_SESSION['user'] == null || $_SESSION['user'] != 'admin') {
                                     </div>
                                 </form>
                             </li>";
+                        };
                     };
                     ?>
                     <li class="list-group-item py-1">

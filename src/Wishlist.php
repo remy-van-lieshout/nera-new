@@ -17,7 +17,7 @@ function IsNullOrEmptyString($str)
 <html lang="nl">
 
 <head>
-    <title><?php echo str_contains($_SERVER['SERVER_NAME'], "nera") ? "Nera" : "Familie van Lieshout";?></title>
+    <title><?php echo str_contains($_SERVER['SERVER_NAME'], "nera") ? "Nera" : "Familie van Lieshout"; ?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
@@ -46,8 +46,11 @@ function IsNullOrEmptyString($str)
                     <?php
                     $result = GetWishList();
                     // output data of each row
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<li class='list-group-item py-1'>
+                    if ($result != NULL) {
+
+
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<li class='list-group-item py-1'>
                                 <form action='../helpers/checkWish.php' method='post'>
                                 <div class='row'>
                                     <div class='d-none'>
@@ -56,30 +59,31 @@ function IsNullOrEmptyString($str)
                                     <div class='d-none'>
                                         <input type='hidden' name='weMax' value=" . $row["weMax"] . ">
                                     </div>";
-                        if (IsNullOrEmptyString($row['weUser']) || $row['weUser'] == $_SESSION['user']) {
-                            echo "<div class='col-1'>
+                            if (IsNullOrEmptyString($row['weUser']) || $row['weUser'] == $_SESSION['user']) {
+                                echo "<div class='col-1'>
                                         <input type='checkbox' value=" . $row["weChecked"] . " name=checked" . $row["weId"] . " onchange='this.form.submit()' " . ($row['weChecked'] == 1 ? 'checked' : '') . ">
                                   </div>
                                   <div class='col'>
                                     <a class='url' href=" . $row["weUrl"] . " target='_blank'>" . $row["weBeschrijving"] . "</a>
                                   </div>";
-                        } else if ($row["weChecked"]) {
-                            echo "<div class='col-1'>
+                            } else if ($row["weChecked"]) {
+                                echo "<div class='col-1'>
                                         <input type='checkbox' value=" . $row["weChecked"] . " name=checked" . $row["weId"] . " onchange='this.form.submit()' " . ($row['weChecked'] == 1 ? 'checked' : '') . " disabled>
                                   </div>
                                   <div class='col'>
                                     <s class='disabledItem'>" . $row["weBeschrijving"] . "</s>
                                   </div>";
-                        } else {
-                            echo "<div class='col-1'>
+                            } else {
+                                echo "<div class='col-1'>
                                     <input type='checkbox' value=" . $row["weChecked"] . " name=checked" . $row["weId"] . " onchange='this.form.submit()' " . ($row['weChecked'] == 1 ? 'checked' : '') . " disabled>
                                   </div>
                                   <div class='col'>
                                     <a class='url' href=" . $row["weUrl"] . " target='_blank'>" . $row["weBeschrijving"] . "</a>
                                   </div>";
-                        }
-                        echo "</form>
+                            }
+                            echo "</form>
                             </li>";
+                        };
                     };
                     ?>
                 </ul>

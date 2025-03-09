@@ -12,7 +12,7 @@ if ($_SESSION['user'] == null) {
 <html lang="nl">
 
 <head>
-    <title><?php echo str_contains($_SERVER['SERVER_NAME'], "nera") ? "Nera" : "Familie van Lieshout";?></title>
+    <title><?php echo str_contains($_SERVER['SERVER_NAME'], "nera") ? "Nera" : "Familie van Lieshout"; ?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
@@ -36,7 +36,7 @@ if ($_SESSION['user'] == null) {
         <?php include '../helpers/NavBar.php'; ?>
         <div class="content">
             <div class="container pt-5 fontNormal" style="max-height: 30vh !important;">
-                <h3>Welkom op de website van <?php echo str_contains($_SERVER['SERVER_NAME'], "nera") ? "Nera " : "Julian ";?> van Lieshout!</h3>
+                <h3>Welkom op de website van <?php echo str_contains($_SERVER['SERVER_NAME'], "nera") ? "Nera " : "Julian "; ?> van Lieshout!</h3>
                 <p>Wij willen iedereen die aanwezig was op de barbeque van 14-07-2024 hartelijk bedanken voor de komst en de gezelligheid. Het is naar ons idee en erg geslaagd feest geweest! Ga naar <a class="url" href="FotosBarbeque.php">foto's barbeque pagina</a> om de foto's van het feest te bekijken.</p->
                 <p>Kijk vooral ook eens op de <a class="url" href="Wishlist.php">wensenlijst pagina</a> om ideeën op te doen en dubbele cadeau's te voorkomen.</p>
                 </br>
